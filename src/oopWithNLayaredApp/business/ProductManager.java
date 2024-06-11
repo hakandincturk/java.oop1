@@ -1,6 +1,7 @@
 package oopWithNLayaredApp.business;
 
 import oopWithNLayaredApp.core.logging.Logger;
+import oopWithNLayaredApp.core.utils.Utils;
 import oopWithNLayaredApp.dataAccess.ProductDao;
 import oopWithNLayaredApp.entities.Product;
 
@@ -20,8 +21,6 @@ public class ProductManager {
 
     productDao.add(product);
 
-    for (Logger logger : loggers) { // [db, mail]
-      logger.log(product.getName() + " urun eklendi.");
-    }
+    Utils.runLoggers(loggers, product.getName() + " urun eklendi.");
   }
 }
